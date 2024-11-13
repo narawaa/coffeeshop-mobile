@@ -39,3 +39,45 @@ Untuk memberi warna yang berbeda pada setiap tombol, atribut color ditambahkan p
 4. **Memunculkan Snackbar.**<br>
 Pada setiap tombol di dalam onTap dari InkWell, ditambahkan kode untuk memunculkan SnackBar dengan ScaffoldMessenger. SnackBar memiliki teks sesuai nama tombol, dengan warna latar belakang yang mengikuti warna kartu.<br>
 </details>
+
+<details>
+<summary>Tugas 8</summary>
+
+#### Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?<br>
+const di Flutter digunakan untuk menandakan bahwa nilai atau objek tidak akan berubah selama runtime. Keuntungannya adalah objek yang diberi label const hanya akan dibuat sekali dan disimpan dalam memori, sehingga menghemat penggunaan memori dan meningkatkan performa aplikasi karena objek tersebut tidak perlu dibuat ulang setiap kali dibutuhkan. Sebaiknya gunakan const ketika widget atau objek tidak akan berubah selama eksekusi aplikasi, seperti Text, Icon, atau Container yang memiliki properti tetap. Namun, sebaiknya hindari menggunakan const jika objek atau widget perlu diubah selama runtime, seperti yang melibatkan data dinamis atau perubahan state, karena const hanya cocok untuk objek yang sifatnya tetap dan tidak berubah.<br>
+
+#### Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!<br>
+Column dan Row adalah widget layout di Flutter yang digunakan untuk mengatur posisi widget lainnya secara vertikal dan horizontal. Column digunakan untuk menata widget secara vertikal yaitu dari atas ke bawah, sedangkan Row digunakan untuk menata widget secara horizontal yaitu dari kiri ke kanan.
+
+Contoh implementasi `Column`:
+```dart
+Column(
+  children: <Widget>[
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ],
+)
+```
+
+Contoh implementasi `Row`:
+```dart
+Row(
+  children: <Widget>[
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ],
+)
+```
+<br>
+
+#### Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!<br>
+Pada halaman product_form, elemen input yang digunakan adalah TextFormField untuk mengisi Product Name, Description, Price, dan Stock. Terdapat beberapa elemen input Flutter lain yang tidak digunakan di tugas ini, seperti DatePicker atau TimePicker untuk memilih tanggal/waktu, DropdownButton untuk pilihan opsi terbatas, Checkbox dan Switch untuk pilihan biner (ya/tidak), serta Slider untuk memilih nilai dalam rentang tertentu. Elemen-elemen ini bisa digunakan jika diperlukan namun, di form ini, elemen input tersebut tidak terlalu diperlukan.<br>
+
+#### Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?<br>
+Agar konsisten, tema global didefinisikan di dalam MaterialApp pada main.dart. ColorScheme ditetapkan untuk warna utama, sekunder, dan elemen lainnya agar semua widget menggunakan warna yang sama. Pada aplikasi ini, tema diimplementasikan untuk menjaga konsistensi tampilan di seluruh aplikasi.<br>
+ 
+#### Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?<br>
+Menggunakan widget Navigator dengan metode push atau pushReplacement untuk berpindah antar halaman. PushReplacement digunakan untuk menggantikan halaman saat ini dengan halaman tujuan, seperti MyHomePage atau ProductEntryFormPage, sehingga pengguna dapat berpindah antar halaman tanpa menumpuk halaman sebelumnya di tumpukan navigasi.<br>
+</details>
