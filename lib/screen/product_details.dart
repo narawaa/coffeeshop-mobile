@@ -36,11 +36,6 @@ class ProductDetailPage extends StatelessWidget {
               "Stock: ${product.fields.stock}",
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 16),
-            Text(
-              "Category: ${product.fields.time}",
-              style: const TextStyle(fontSize: 16),
-            ),
           ],
         ),
       ),

@@ -57,7 +57,7 @@ class LeftDrawer extends StatelessWidget {
             ),
             
             ListTile(
-              leading: const Icon(Icons.add_reaction_rounded),
+              leading: const Icon(Icons.menu_book),
               title: const Text('Daftar Product'),
               onTap: () {
                 Navigator.push(
