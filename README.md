@@ -86,31 +86,46 @@ Menggunakan widget Navigator dengan metode push atau pushReplacement untuk berpi
 <summary>Tugas 9</summary>
 
 #### Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?<br>
+Model JSON memastikan data konsisten, mudah dimanipulasi, dan mengurangi kesalahan dibanding langsung menggunakan JSON mentah. Tanpa model, risiko akses salah, tipe tidak konsisten, dan debugging sulit meningkat.
 
 #### Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini.<br>
+Library HTTP menghubungkan aplikasi ke backend. Data produk diambil dari backend Django lewat GET ke http://127.0.0.1:8000/json/, membuat data lebih dinamis dan mudah diperbarui.
 
 #### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.<br>
+CookieRequest digunakan untuk menangani komunikasi Flutter dengan server Django, termasuk pengelolaan cookie untuk autentikasi dan sesi pengguna. Instance CookieRequest dibagikan ke semua komponen agar sesi pengguna konsisten dan autentikasi cukup dilakukan sekali untuk diakses seluruh komponen.
 
 #### Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.<br>
+1. Pengguna memasukkan data di form dan menekan tombol Submit.  
+2. Flutter mengirim data ke backend menggunakan HTTP POST.  
+3. Backend menyimpan data ke database.  
+4. Flutter mengambil data terbaru melalui HTTP GET.  
+5. Data ditampilkan di UI menggunakan widget seperti ListView atau GridView.
 
 #### Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.<br>
+- Registrasi:  Pengguna mengisi form untuk membuat akun. Data dikirim ke Django, divalidasi, lalu disimpan. Jika berhasil, pesan sukses ditampilkan di Flutter.  
+
+- Login: Pengguna mengisi form login. Data dikirim ke Django, lalu cookie autentikasi dibuat jika valid. Cookie disimpan oleh `pbp_django_auth`, dan pengguna masuk ke menu utama.  
+
+- Logout: Pengguna menekan Logout. Flutter mengirim permintaan ke Django, sesi dihapus, cookie dihapus, dan pengguna diarahkan ke halaman login.
 
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).<br>
 1. **Mengimplementasikan fitur registrasi akun pada proyek tugas Flutter.**<br>
+Buat aplikasi bernama authentication di Django untuk menangani autentikasi pengguna yang terintegrasi dengan Flutter, dengan menambahkan fungsi login(), register(), dan logout() di views.py sebagai endpoint untuk proses autentikasi.
 
 2. **Membuat halaman login pada proyek tugas Flutter.**<br>
+Membuat halaman login dan register yang berupa form untuk input kredensial pengguna.
 
 3. **Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.**<br>
+Menyambungkan database local dengan Flutter.
 
 4. **Membuat model kustom sesuai dengan proyek aplikasi Django.**<br>
+Membuat model kustom untuk menerima data JSON dari endpoint /json/ di Django dan menerapkan fetch data dari Django dengan cara menambah dependensi HTTP dengan memodifikasi AndroidManifest.xml pada proyek Flutter.
 
 5. **Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy.**<br>
 - Tampilkan name, price, dan description dari masing-masing item pada halaman ini.
+Membuat halaman list produk melalui product_list.dart yang menampilkan semua produk user.
 
 6. **Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.**<br>
-- Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
-- Tampilkan seluruh atribut pada model item kamu pada halaman ini.
-- Tambahkan tombol untuk kembali ke halaman daftar item.
-- Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login.
+Untuk setiap item pada list produk, jika diklik akan mengarahkan ke halaman detail produk.
 
 </details>
