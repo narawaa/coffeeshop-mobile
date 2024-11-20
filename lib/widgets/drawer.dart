@@ -1,6 +1,7 @@
+import 'package:click_coffee/screen/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:click_coffee/screen/menu.dart';
-import 'package:click_coffee/screen/product_form.dart';
+import 'package:click_coffee/screen/product_entry.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -54,7 +55,18 @@ class LeftDrawer extends StatelessWidget {
                 );
               },
             ),
-      
+            
+            ListTile(
+              leading: const Icon(Icons.add_reaction_rounded),
+              title: const Text('Daftar Product'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProductListPage()),
+                );
+              },
+            ),
+
             ListTile(
               leading: const Icon(Icons.add),
               title: const Text('Tambah Product'),

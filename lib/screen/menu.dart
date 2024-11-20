@@ -1,6 +1,11 @@
+import 'package:click_coffee/screen/login.dart';
+import 'package:click_coffee/screen/product_list.dart';
 import 'package:flutter/material.dart';
-import 'package:click_coffee/screen/product_form.dart';
+import 'package:click_coffee/screen/product_entry.dart';
 import 'package:click_coffee/widgets/drawer.dart';
+
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -10,8 +15,8 @@ class MyHomePage extends StatelessWidget {
   final String className = 'PBP F'; // Kelas
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Daftar Produk", Icons.menu_book, Color(0xFF3B3D77)),
-    ItemHomepage("Tambah Produk", Icons.add, Color(0xFF6A6C9D)),
+    ItemHomepage("Lihat Daftar Produk", Icons.menu_book, const Color(0xFF3B3D77)),
+    ItemHomepage("Tambah Produk", Icons.add, const Color(0xFF6A6C9D)),
     ItemHomepage("Logout", Icons.logout, Colors.red.shade800),
   ];
 
@@ -139,34 +144,18 @@ class ItemHomepage {
 
 
 class ItemCard extends StatelessWidget {
-  // Menampilkan kartu dengan ikon dan nama.
-
   final ItemHomepage item; 
-  
   const ItemCard(this.item, {super.key}); 
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Material(
-      // Menentukan warna latar belakang dari tema aplikasi.
       color: item.color,
-      // Membuat sudut kartu melengkung.
       borderRadius: BorderRadius.circular(12),
       
       child: InkWell(
-        // Aksi ketika kartu ditekan.
-        onTap: () {
-          // Menampilkan pesan SnackBar saat kartu ditekan.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!",
-                style: const TextStyle(color: Colors.white),
-                ),
-                backgroundColor: item.color,
-              )
-            );
-
+        onTap: () async {
           if (item.name == "Tambah Produk") {
             Navigator.pushReplacement(
               context,
@@ -174,6 +163,35 @@ class ItemCard extends StatelessWidget {
                 builder: (context) => const ProductEntryFormPage(),
               )
             );
+          }else if (item.name == "Lihat Mood") {
+            Navigator.push(context,
+              MaterialPageRoute(
+                builder: (context) => const ProductListPage()
+                ),
+            );
+          } else if (item.name == "Logout") {
+              final response = await request.logout(
+                "http://127.0.0.1:8000/auth/logout/");
+              String message = response["message"];
+              if (context.mounted) {
+                if (response['status']) {
+                  String uname = response["username"];
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("$message Sampai jumpa, $uname."),
+                    backgroundColor: item.color,
+                  ));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                // } else {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     SnackBar(
+                //       content: Text(message),
+                //     ),
+                //   );
+                }
+              }
           }
         },
         // Container untuk menyimpan Icon dan Text

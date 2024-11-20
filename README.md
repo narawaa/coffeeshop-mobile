@@ -81,3 +81,36 @@ Agar konsisten, tema global didefinisikan di dalam MaterialApp pada main.dart. C
 #### Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?<br>
 Menggunakan widget Navigator dengan metode push atau pushReplacement untuk berpindah antar halaman. PushReplacement digunakan untuk menggantikan halaman saat ini dengan halaman tujuan, seperti MyHomePage atau ProductEntryFormPage, sehingga pengguna dapat berpindah antar halaman tanpa menumpuk halaman sebelumnya di tumpukan navigasi.<br>
 </details>
+
+<details>
+<summary>Tugas 9</summary>
+
+#### Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?<br>
+
+#### Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini.<br>
+
+#### Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.<br>
+
+#### Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.<br>
+
+#### Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.<br>
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).<br>
+1. **Mengimplementasikan fitur registrasi akun pada proyek tugas Flutter.**<br>
+
+2. **Membuat halaman login pada proyek tugas Flutter.**<br>
+
+3. **Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.**<br>
+
+4. **Membuat model kustom sesuai dengan proyek aplikasi Django.**<br>
+
+5. **Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy.**<br>
+- Tampilkan name, price, dan description dari masing-masing item pada halaman ini.
+
+6. **Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.**<br>
+- Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
+- Tampilkan seluruh atribut pada model item kamu pada halaman ini.
+- Tambahkan tombol untuk kembali ke halaman daftar item.
+- Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login.
+
+</details>
